@@ -4,31 +4,35 @@
     Welcome to {{ title }}!
   </h1>
   <h2>{{a*a*b*b}}</h2>
-  <button [disabled] = "!ready" (click)="showMessage()">CLICK</button>
+  <button [disabled]="!ready" (click)="showMessage()">CLICK</button>
 
-  <input type="text" placeholder="NAME" [(ngModel)]="name"/>
-  <br>
-  MY NAME IS {{name}}
+  <input type="text" placeholder="NAME" [(ngModel)]="name" />
+  <br> MY NAME IS {{name}}
 </div>
 <br>
 
 <ul>
   <ng-container *ngFor="let place of places">
-      <li *ngIf="place.active" >
+    <li *ngIf="place.active">
       {{place.name}}
     </li>
   </ng-container>
 </ul>
 
 <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-  </agm-map>
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
 
-  <ul>
-      <ng-container *ngFor="let place of places; let i = index">
-          <li [ngStyle] = "{color: (place.active ? 'black' : 'gray')}"
-          [ngClass] = '{odd: (i+1) % 2 != 0}'>
-          {{place.name}}
-        </li>
-      </ng-container>
-    </ul>
+<ul>
+  <ng-container *ngFor="let place of places; let i = index" [ngSwitch] = "place.nearness">
+    <li appCountclicks 
+        [ngStyle]="{color: (place.active ? 'black' : 'gray')}" 
+        [ngClass]='{odd: (i+1) % 2 != 0}'
+        [appHighlight] = "place.plan">
+      {{place.name}}
+      <span *ngSwitchCase = "1" [ngStyle] = "{color: 'green'}">Very close</span>
+      <span *ngSwitchCase = "2" [ngStyle] = "{color: 'black'}">Near</span>
+      <span *ngSwitchCase = "3" [ngStyle] = "{color: 'red'}">Far away</span>
+    </li>
+  </ng-container>
+</ul>

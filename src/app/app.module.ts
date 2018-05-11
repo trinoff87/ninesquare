@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
+import { HighlightDirective } from './directives/highlight.directive';
+import { CountclicksDirective } from './directives/countclicks.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HighlightDirective,
+    CountclicksDirective
   ],
   imports: [
     BrowserModule,
