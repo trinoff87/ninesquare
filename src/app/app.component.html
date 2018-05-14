@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!--div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
@@ -17,13 +17,36 @@
       {{place.name}}
     </li>
   </ng-container>
-</ul>
+</ul-->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>NineSquare</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 
 <agm-map [latitude]="lat" [longitude]="lng">
   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 </agm-map>
 
-<ul>
+<div fxLayout="row">
+  <div fxFlex="60" fxFlexOffset="5">
+      <mat-list role="list">
+        <h2>Near Places</h2>
+          <ng-container *ngFor="let place of places">
+            <mat-list-item role="listitem" *ngIf="place.active">
+              {{place.name}}
+              <mat-divider></mat-divider>
+            </mat-list-item>
+          </ng-container>
+         </mat-list>
+  </div>
+  <div fxFlexOffset="5">
+    <h2>Highlights</h2>
+  </div>
+</div>
+
+<!--ul>
   <ng-container *ngFor="let place of places; let i = index" [ngSwitch] = "place.nearness">
     <li appCountclicks 
         [ngStyle]="{color: (place.active ? 'black' : 'gray')}" 
@@ -35,4 +58,4 @@
       <span *ngSwitchCase = "3" [ngStyle] = "{color: 'red'}">Far away</span>
     </li>
   </ng-container>
-</ul>
+</ul-->
