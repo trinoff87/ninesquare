@@ -6,3 +6,8 @@ agm-map {
 .odd {
     background-color: aliceblue;
 }
+
+.anchor {
+    color: inherit;
+    text-decoration: none;
+}

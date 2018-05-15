@@ -11,13 +11,6 @@ export class AppComponent {
   b = 3;
   ready = false;
   name = '';
-  lat = 20.6118227;
-  lng = -103.4108922;
-  places: any = [
-    {plan: 'paid', nearness: 1, distance: 1, active: true, name: 'Flowers House'},
-    {plan: 'free', nearness: 2, distance: 5.3, active: true, name: 'Kryspy Kreme'},
-    {plan: 'paid', nearness: 3, distance: 8.7, active: false, name: 'Swagger Petstore'},
-  ];
 
   constructor () {
     setTimeout (() => {
