@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ENGINE_METHOD_DIGESTS } from 'constants';
 
 @Component({
   selector: 'app-detail',
