@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PlacesService} from '../services/places.service';
 
 @Component({
   selector: 'app-places',
@@ -7,15 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlacesComponent implements OnInit {
 
+  places = null;
+
   lat = 20.6118227;
   lng = -103.4108922;
-  places: any = [
-    {id: 1, pllatan: 'paid', nearness: 1, distance: 1, active: true, name: 'Flowers House'},
-    {id: 2, plan: 'free', nearness: 2, distance: 5.3, active: true, name: 'Kryspy Kreme'},
-    {id: 3, plan: 'paid', nearness: 3, distance: 8.7, active: false, name: 'Swagger Petstore'},
-  ];
 
-  constructor() { }
+  constructor(private placesServices: PlacesService) {
+    this.places = placesServices.getPlaces();
+  }
 
   ngOnInit() {
   }
